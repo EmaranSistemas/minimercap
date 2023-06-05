@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_launcher_background"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true">
+
+
+                        <TextView
+                            android:id="@+id/id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1" />
+
+                        <TextView
+                            android:id="@+id/nombre"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre del producto bastate grande"
+                            android:translationX="10dp" />
+                </LinearLayout>
+                
+
+                <EditText
+                    android:id="@+id/inventario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="inventario"
+                    android:inputType="number|textPersonName"
+                    android:textSize="9sp"
+                    android:imeOptions="actionNext"/>
+
+                <EditText
+                    android:id="@+id/stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="pedido"
+                    android:inputType="number"
+                    android:textSize="9sp"
+                    android:imeOptions="actionNext"
+                    />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_width="88dp"
+                    android:layout_height="40dp"
+                    android:text="Insertar"
+                    android:textSize="11dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/boton_bordes"
+                    />
+        </RelativeLayout>
+
+</LinearLayout>

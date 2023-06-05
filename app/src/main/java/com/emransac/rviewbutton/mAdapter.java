@@ -1,6 +1,5 @@
 package com.emransac.rviewbutton;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,10 +40,29 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
 
         holder.txtid.setText(producto.getId());
         holder.txtNombre.setText(producto.getNombre());
-        holder.txtStock.setText(producto.getStock());
+        holder.txtInventario.setText(producto.getInventario());
+        holder.txtPedido.setText(producto.getPedido());
         Glide.with(context)
                 .load(producto.getImg())
                 .into(holder.imageView);
+
+        holder.txtInventario.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    holder.txtInventario.setText("");
+                }
+            }
+        });
+
+        holder.txtPedido.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    holder.txtPedido.setText("");
+                }
+            }
+        });
     }
 
     @Override
@@ -62,7 +80,8 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
 
         TextView txtid;
         TextView txtNombre;
-        TextView txtStock;
+        TextView txtInventario;
+        TextView txtPedido;
         ImageView imageView;
         Button button;
         itemClickListener itemClickListener;
@@ -73,7 +92,8 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
 
             txtid = itemView.findViewById(R.id.id);
             txtNombre = itemView.findViewById(R.id.nombre);
-            txtStock = itemView.findViewById(R.id.stock);
+            txtInventario = itemView.findViewById(R.id.inventario);
+            txtPedido = itemView.findViewById(R.id.pedido);
             imageView = itemView.findViewById(R.id.imageView);
             button = itemView.findViewById(R.id.button);
 
@@ -86,10 +106,11 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
         @Override
         public void onClick(View v) {
             String nombre = txtNombre.getText().toString();
-            String stock = txtStock.getText().toString();
-            if (stock.equals("0")) {
+            String inventario = txtInventario.getText().toString();
+            String pedido = txtPedido.getText().toString();
+            if (pedido.equals("0")) {
                 itemClickListener.onItemClick(getAdapterPosition());
-                textInputListener.onTextInputClicked(nombre, stock);
+                textInputListener.onTextInputClicked(nombre,inventario,pedido);
                 mAdapter.this.removeItem(getAdapterPosition());
             } else {
                 // No se cumple la condición, no se elimina el elemento
@@ -105,6 +126,6 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
     }
 
     public interface TextInputListener {
-        void onTextInputClicked(String nombre, String stock);
+        void onTextInputClicked(String nombre, String inventario, String pedido);
     }
 }

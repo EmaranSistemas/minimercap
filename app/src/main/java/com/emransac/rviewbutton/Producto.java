@@ -1,15 +1,17 @@
 package com.emransac.rviewbutton;
 
 public class Producto {
-    String id,nombre,stock,img;
+    String id,nombre,pedido,inventario,stock,img;
     public Producto(){
     }
 
-    public Producto(String id,String nombre,String stock,String img){
+    public Producto(String id,String nombre,String inventario,String pedio, String stock,String img){
         this.id = id;
         this.nombre = nombre;
-        this.stock = stock;
+        this.pedido = pedido;
+        this.inventario = inventario;
         this.img = img;
+        this.stock = stock;
     }
 
     public String getId(){
@@ -20,6 +22,14 @@ public class Producto {
         return nombre;
     }
 
+    public String getInventario(){
+        return inventario;
+    }
+
+    public String getPedido(){
+        return pedido;
+    }
+
     public String getStock(){
         return stock;
     }
@@ -27,6 +37,10 @@ public class Producto {
     public String getImg(){
         return img;
     }
+
+
+
+
     public String setId(){
         return this.id;
     }

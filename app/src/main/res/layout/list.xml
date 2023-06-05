@@ -32,7 +32,7 @@
                             android:text="Nombre del producto bastate grande"
                             android:translationX="10dp" />
                 </LinearLayout>
-                
+
 
                 <EditText
                     android:id="@+id/inventario"

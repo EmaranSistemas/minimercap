@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity implements mAdapter.itemClic
 
 
         for(int i=0;i<5;i++){
-            producto= new Producto("1","canela"+i,"4","https://sibarita.pe/wp-content/uploads/2021/07/SIB008.jpg");
-
+            producto= new Producto(Integer.toString(i),"Nombre producto "+i,"0","https://sibarita.pe/wp-content/uploads/2021/07/SIB008.jpg");
             productArrayList.add(producto);
         }
 

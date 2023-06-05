@@ -38,6 +38,8 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Producto producto = productoArrayList.get(position);
+
+        holder.txtid.setText(producto.getId());
         holder.txtNombre.setText(producto.getNombre());
         holder.txtStock.setText(producto.getStock());
         Glide.with(context)
@@ -57,9 +59,11 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        ImageView imageView;
+
+        TextView txtid;
         TextView txtNombre;
         TextView txtStock;
+        ImageView imageView;
         Button button;
         itemClickListener itemClickListener;
         TextInputListener textInputListener;
@@ -67,9 +71,10 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView, itemClickListener itemClickListener, TextInputListener textInputListener) {
             super(itemView);
 
-            imageView = itemView.findViewById(R.id.imageView);
+            txtid = itemView.findViewById(R.id.id);
             txtNombre = itemView.findViewById(R.id.nombre);
             txtStock = itemView.findViewById(R.id.stock);
+            imageView = itemView.findViewById(R.id.imageView);
             button = itemView.findViewById(R.id.button);
 
             this.itemClickListener = itemClickListener;

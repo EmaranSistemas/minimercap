@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements mAdapter.itemClic
 
 
         for(int i=0;i<5;i++){
-            producto= new Producto(Integer.toString(i),"Nombre producto "+i,"0","0","0","https://sibarita.pe/wp-content/uploads/2021/07/SIB008.jpg");
+            producto= new Producto(Integer.toString(i),"Canela "+i,"0","0","0","https://sibarita.pe/wp-content/uploads/2021/07/SIB008.jpg");
             productArrayList.add(producto);
         }
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements mAdapter.itemClic
     }
 
     @Override
-    public void onTextInputClicked(String nombre, String stock, String pedido) {
-        Toast.makeText(MainActivity.this,"Nombre: "+nombre+" Stock: "+stock,Toast.LENGTH_SHORT).show();
+    public void onTextInputClicked(String nombre, String inventario, String pedido) {
+        Toast.makeText(MainActivity.this,"N: "+nombre+" I: "+inventario+" P: "+pedido,Toast.LENGTH_SHORT).show();
     }
 }

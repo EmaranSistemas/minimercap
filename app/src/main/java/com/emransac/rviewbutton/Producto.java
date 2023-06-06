@@ -5,7 +5,7 @@ public class Producto {
     public Producto(){
     }
 
-    public Producto(String id,String nombre,String inventario,String pedio, String stock,String img){
+    public Producto(String id,String nombre,String inventario,String pedido, String stock,String img){
         this.id = id;
         this.nombre = nombre;
         this.pedido = pedido;
@@ -39,16 +39,12 @@ public class Producto {
     }
 
 
-
-
     public String setId(){
         return this.id;
     }
-
     public String setNombre(){
         return this.nombre;
     }
-
     public String setStock(){
         return this.stock;
     }

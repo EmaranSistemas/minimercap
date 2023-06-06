@@ -6,10 +6,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements mAdapter.itemClickListener, mAdapter.TextInputListener{
+public class MainActivity extends AppCompatActivity implements Adapter.itemClickListener, Adapter.TextInputListener{
 
     private RecyclerView recyclerView;
-    private mAdapter madapter;
+    private Adapter adapter;
     private Producto producto;
     public static ArrayList<Producto> productArrayList = new ArrayList<>();
 
@@ -20,19 +20,15 @@ public class MainActivity extends AppCompatActivity implements mAdapter.itemClic
 
 
         for(int i=0;i<5;i++){
-            producto= new Producto(Integer.toString(i),"Canela "+i,"0","0","0","https://sibarita.pe/wp-content/uploads/2021/07/SIB008.jpg");
+            producto= new Producto(Integer.toString(i),"Canela molida para sobres"+i,"","","","https://sibarita.pe/wp-content/uploads/2021/07/SIB008.jpg");
             productArrayList.add(producto);
         }
 
-
-
-
-
         recyclerView = findViewById(R.id.recycler_view);
-        madapter = new mAdapter(this,productArrayList,this,this);
+        adapter = new Adapter(this,productArrayList,this,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        recyclerView.setAdapter(madapter);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override

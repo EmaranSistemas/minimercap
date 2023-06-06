@@ -1,26 +1,37 @@
 package com.emransac.rviewbutton;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.Request;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
-public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private final Context context;
     private final ArrayList<Producto> productoArrayList;
     private itemClickListener itemClickListener;
     private TextInputListener textInputListener; // Agregado el campo TextInputListener
 
-    public mAdapter(Context context, ArrayList<Producto> productoArrayList, itemClickListener itemClickListener, TextInputListener textInputListener) {
+    public Adapter(Context context, ArrayList<Producto> productoArrayList, itemClickListener itemClickListener, TextInputListener textInputListener) {
         this.context = context;
         this.productoArrayList = productoArrayList;
         this.itemClickListener = itemClickListener;
@@ -108,19 +119,30 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
             String nombre = txtNombre.getText().toString();
             String inventario = txtInventario.getText().toString();
             String pedido = txtPedido.getText().toString();
-            if (pedido.equals("0")) {
+            if (!nombre.isEmpty() && !inventario.isEmpty() && !pedido.isEmpty()) {
                 itemClickListener.onItemClick(getAdapterPosition());
                 textInputListener.onTextInputClicked(nombre,inventario,pedido);
-                mAdapter.this.removeItem(getAdapterPosition());
+                Adapter.this.removeItem(getAdapterPosition());
             } else {
+                if(nombre.isEmpty()){
+                    Toast.makeText(context, "Ingrese nombre", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if(inventario.isEmpty()){
+                    Toast.makeText(context, "Ingrese inventario", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if(pedido.isEmpty()){
+                    Toast.makeText(context, "Ingrese pedido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 // No se cumple la condición, no se elimina el elemento
             }
             //itemClickListener.onItemClick(getAdapterPosition());
             //textInputListener.onTextInputClicked(nombre, stock);
-            //mAdapter.this.removeItem(getAdapterPosition());
+            //Adapter.this.removeItem(getAdapterPosition());
         }
     }
-
     public interface itemClickListener {
         void onItemClick(int position);
     }
@@ -128,4 +150,5 @@ public class mAdapter extends RecyclerView.Adapter<mAdapter.ViewHolder> {
     public interface TextInputListener {
         void onTextInputClicked(String nombre, String inventario, String pedido);
     }
+
 }
